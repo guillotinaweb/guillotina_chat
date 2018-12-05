@@ -20,12 +20,16 @@ Installation
 
 This example will use virtualenv::
 
-  virtualenv .
-  ./bin/python setup.py develop
+  python -m venv .
+  ./bin/pip install -e .[test]
 
 
 Running
 -------
+
+Run pg:
+
+  make run-postgres
 
 Most simple way to get running::
 

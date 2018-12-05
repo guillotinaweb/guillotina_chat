@@ -1,5 +1,5 @@
 from guillotina import configure
-from guillotina.async import IAsyncUtility
+from guillotina.async_util import IAsyncUtility
 from guillotina.component import getMultiAdapter
 from guillotina.interfaces import IResourceSerializeToJsonSummary
 from guillotina.renderers import GuillotinaJSONEncoder
