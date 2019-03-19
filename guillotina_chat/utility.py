@@ -1,13 +1,12 @@
-from guillotina import configure
+import asyncio
+import json
+import logging
+
 from guillotina.async_util import IAsyncUtility
 from guillotina.component import getMultiAdapter
 from guillotina.interfaces import IResourceSerializeToJsonSummary
 from guillotina.renderers import GuillotinaJSONEncoder
 from guillotina.utils import get_authenticated_user_id, get_current_request
-
-import asyncio
-import json
-import logging
 
 logger = logging.getLogger('guillotina_chat')
 
@@ -16,7 +15,6 @@ class IMessageSender(IAsyncUtility):
     pass
 
 
-@configure.utility(provides=IMessageSender)
 class MessageSenderUtility:
 
     def __init__(self, settings=None, loop=None):

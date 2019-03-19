@@ -1,6 +1,13 @@
 from guillotina import configure
 
 app_settings = {
+    "load_utilities": {
+        "guillotina_chat.message_sender": {
+            "provides": "guillotina_chat.utility.IMessageSender",
+            "factory": "guillotina_chat.utility.MessageSenderUtility",
+            "settings": {}
+        },
+    }
 }
 
 
