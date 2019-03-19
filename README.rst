@@ -52,3 +52,11 @@ Then, install the app::
 Test, it's working::
 
     curl http://localhost:8080/db/container/@get-conversations --user root:root
+
+
+And, test sending message::
+
+    curl -i -X POST http://localhost:8080/db/container/conversations/ --data-raw '{
+        "@type": "Conversation",
+        "title": "New convo with foobar2", "users": ["Bob", "Alice"] }
+    ' --user root:root
