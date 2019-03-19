@@ -34,3 +34,21 @@ Run pg:
 Most simple way to get running::
 
   ./bin/guillotina
+
+
+Setup
+-----
+
+To setup the app then, first create container::
+
+    curl -X POST http://localhost:8080/db -d '{"id": "container", "@type": "Container"}' --user root:root
+
+Then, install the app::
+
+    curl -X POST http://localhost:8080/db/container/@addons -d '{"id": "dbusers"}' --user root:root
+    curl -X POST http://localhost:8080/db/container/@addons -d '{"id": "guillotina_chat"}' --user root:root
+
+
+Test, it's working::
+
+    curl http://localhost:8080/db/container/@get-conversations --user root:root
