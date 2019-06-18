@@ -13,7 +13,7 @@ setup(
     description='Guillotina server application python project',
     long_description=README,
     install_requires=[
-        'guillotina',
+        'guillotina<5',
         'guillotina_dbusers'
     ],
     author='',
