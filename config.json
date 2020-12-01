@@ -1,5 +1,9 @@
 {
-  "applications": ["guillotina_chat", "guillotina_dbusers"],
+  "applications": [
+    "guillotina_chat",
+    "guillotina.contrib.dbusers",
+    "guillotina.contrib.swagger"
+  ],
   "databases": [{
     "db": {
       "storage": "postgresql",

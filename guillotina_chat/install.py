@@ -1,4 +1,5 @@
 from guillotina import configure
+from guillotina import task_vars
 from guillotina.addons import Addon
 from guillotina.content import create_content_in_container
 from guillotina.interfaces import IRolePermissionManager
@@ -24,5 +25,5 @@ class ManageAddon(Addon):
 
     @classmethod
     async def uninstall(cls, container, request):
-        registry = request.container_settings  # noqa
+        registry = task_vars.registry.get()  # noqa
         # uninstall logic here...
