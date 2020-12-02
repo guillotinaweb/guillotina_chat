@@ -14,7 +14,7 @@ setup(
     long_description=README,
     install_requires=[
         'guillotina~=6.0',
-        'uvicorn[standard]'
+        'websockets'
     ],
     author='',
     author_email='',
