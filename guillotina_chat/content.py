@@ -1,10 +1,14 @@
 from guillotina import configure, content, Interface, schema
+from guillotina.directives import index_field
+from guillotina.interfaces import IFolder, IItem
 
 
-class IConversation(Interface):
+class IConversation(IFolder):
 
+    index_field("users", type="keyword")
     users = schema.List(
-        value_type=schema.TextLine()
+        value_type=schema.TextLine(),
+        default=list()
     )
 
 
@@ -17,7 +21,8 @@ class Conversation(content.Folder):
     pass
 
 
-class IMessage(Interface):
+class IMessage(IItem):
+    index_field("text", type="text")
     text = schema.Text(required=True)
 
 
@@ -27,6 +32,8 @@ class IMessage(Interface):
     behaviors=[
         "guillotina.behaviors.dublincore.IDublinCore",
         "guillotina.behaviors.attachment.IAttachment"
-    ])
+    ],
+    globally_addable=False,
+)
 class Message(content.Item):
     pass

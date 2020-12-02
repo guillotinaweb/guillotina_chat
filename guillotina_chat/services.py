@@ -6,11 +6,11 @@ from guillotina_chat.content import IConversation
 
 
 @configure.service(for_=IContainer, name='@get-conversations',
-                   permission='guillotina.Authenticated')
+                   permission='guillotina.AccessContent')
 async def get_conversations(context, request):
     results = []
     conversations = await context.async_get('conversations')
-    user_id = get_authenticated_user_id(request)
+    user_id = get_authenticated_user_id()
     async for conversation in conversations.async_values():
         if user_id in conversation.users:
             summary = await getMultiAdapter(

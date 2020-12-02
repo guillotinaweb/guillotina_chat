@@ -1,5 +1,5 @@
 import asyncio
-import json
+import orjson
 import logging
 
 from guillotina.async_util import IAsyncUtility
@@ -23,7 +23,7 @@ class MessageSenderUtility:
         self._webservices = []
 
     def register_ws(self, ws, request):
-        ws.user_id = get_authenticated_user_id(request)
+        ws.user_id = get_authenticated_user_id()
         self._webservices.append(ws)
 
     def unregister_ws(self, ws):
@@ -44,8 +44,7 @@ class MessageSenderUtility:
                 for user_id in message.__parent__.users:
                     for ws in self._webservices:
                         if ws.user_id == user_id:
-                            await ws.send_str(json.dumps(
-                                summary, cls=GuillotinaJSONEncoder))
+                            await ws.send_str(orjson.dumps(summary))
             except Exception:
                 logger.warn(
                     'Error sending message',

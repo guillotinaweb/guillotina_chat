@@ -1,4 +1,5 @@
 from guillotina import configure
+from guillotina import task_vars
 from guillotina.addons import Addon
 from guillotina.content import create_content_in_container
 from guillotina.interfaces import IRolePermissionManager
@@ -11,6 +12,10 @@ class ManageAddon(Addon):
 
     @classmethod
     async def install(cls, container, request):
+        roleperm = IRolePermissionManager(container)
+        roleperm.grant_permission_to_role_no_inherit(
+            'guillotina.AccessContent', 'guillotina.Member')
+
         if not await container.async_contains('conversations'):
             conversations = await create_content_in_container(
                 container, 'Folder', 'conversations',
@@ -24,5 +29,5 @@ class ManageAddon(Addon):
 
     @classmethod
     async def uninstall(cls, container, request):
-        registry = request.container_settings  # noqa
+        registry = task_vars.registry.get()  # noqa
         # uninstall logic here...
