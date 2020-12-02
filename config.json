@@ -2,7 +2,8 @@
   "applications": [
     "guillotina_chat",
     "guillotina.contrib.dbusers",
-    "guillotina.contrib.swagger"
+    "guillotina.contrib.swagger",
+    "guillotina.contrib.catalog.pg"
   ],
   "databases": [{
     "db": {
@@ -46,5 +47,9 @@
   "jwt": {
     "secret": "foobar",
     "algorithm": "HS256"
+  },
+  "jwk": {
+    "k": "A9u0AcgOdnwty4bB_OnWCd_DfN5BT9GtZ5aLfSrMiTQ",
+    "kty": "oct"
   }
 }
