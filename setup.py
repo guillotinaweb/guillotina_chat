@@ -13,7 +13,8 @@ setup(
     description='Guillotina server application python project',
     long_description=README,
     install_requires=[
-        'guillotina~=6.0'
+        'guillotina~=6.0',
+        'uvicorn[standard]'
     ],
     author='',
     author_email='',
