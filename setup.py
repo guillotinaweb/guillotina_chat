@@ -13,8 +13,7 @@ setup(
     description='Guillotina server application python project',
     long_description=README,
     install_requires=[
-        'guillotina~=6.0',
-        'websockets'
+        'guillotina~=6.0'
     ],
     author='',
     author_email='',
